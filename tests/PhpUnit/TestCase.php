@@ -56,7 +56,7 @@ class TestCase extends OrchestraTestCase
         'Supervisor',
     ];
 
-    const RESOURCES_HEALTHY = 18;
+    const RESOURCES_HEALTHY = 14;
 
     const RESOURCES_FAILING = [
         'AppKey',

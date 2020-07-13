@@ -2,6 +2,7 @@
 
 namespace PragmaRX\Health\Notifications;
 
+use Illuminate\Support\Str;
 use Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -173,7 +174,7 @@ class HealthStatus extends Notification
 
         return sprintf(
             $this->getActionMessage($this),
-            studly_case($this->resource->name),
+            Str::studly($this->resource->name),
             $domain ? " in {$domain}." : '.'
         );
     }

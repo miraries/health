@@ -3,8 +3,8 @@
 namespace PragmaRX\Health\Checkers;
 
 use Illuminate\Support\Facades\DB;
-use PragmaRX\Health\Support\Timer;
 use PragmaRX\Health\Support\Result;
+use SebastianBergmann\Timer\Timer;
 
 class Database extends Base
 {
@@ -49,13 +49,14 @@ class Database extends Base
 
     protected function rawQuery()
     {
-        Timer::start();
+        $timer = new Timer();
+        $timer->start();
 
         DB::connection($this->getConnectionName())->select(
             DB::raw($this->target->query)
         );
 
-        $took = round(Timer::stop(), 5);
+        $took = round($timer->stop()->asSeconds(), 5);
         $tookHuman = "{$took}s";
 
         $this->target->setDisplay($this->target->name." ({$tookHuman})");
