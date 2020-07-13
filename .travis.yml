@@ -1,9 +1,7 @@
-dist: trusty
+dist: bionic
 language: php
 
 php:
-  - 7.1
-  - 7.2
   - 7.3
   - 7.4snapshot
 # - nightly
@@ -22,10 +20,3 @@ before_script:
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-
-after_script:
-  - |
-    if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
