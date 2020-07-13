@@ -2,12 +2,12 @@
 
 namespace PragmaRX\Health\Notifications;
 
-use Illuminate\Support\Str;
-use Request;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Str;
+use Request;
 
 class HealthStatus extends Notification
 {
