@@ -317,7 +317,9 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->app->singleton(
             'pragmarx.health.commands',
-            $this->instantiateCommands()
+            function () {
+                return $this->instantiateCommands();
+            }
         );
     }
 
